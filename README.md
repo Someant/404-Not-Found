@@ -9,6 +9,8 @@ About:
 目前，勉强能用，后续会加入一些新的功能，如：用户管理之类
 <p>Demo:<a href="http://404notfound.cc/" target="_blank">404notfound.cc</a></p>
 
+<p>userpanel page service infomation nedd istall munin</p>
+
 <p>step 1:<br>
 import sql.sql</p>
 
