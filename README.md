@@ -15,7 +15,4 @@ About:
 import sql.sql</p>
 
 <p>step 2:<br>edit config.php mysql connection</p>
-[code]define('DBHost', 'localhost');
-define('DBName', 'xxxx');
-define('DBUser', 'xxxx');
-define('DBPassword', 'xxxxxxx');[/code]
+
