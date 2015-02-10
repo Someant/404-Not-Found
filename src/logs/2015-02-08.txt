@@ -1,0 +1,79 @@
+Time : 17:57:38
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'usetime=? WHERE number=?' at line 1
+Raw SQL : UPDATE gift SET status =? usetime=? WHERE number=?
+
+Time : 17:25:31
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : UPDATE gift SET status = ? ,usetime = ? WHERE number=?
+
+Time : 04:27:37
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 04:26:36
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 04:23:38
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 04:22:10
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 04:20:50
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 04:19:45
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 04:19:19
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 04:18:14
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+Time : 03:54:40
+SQLSTATE[HY000] [1045] Access denied for user 'shad'@'localhost' (using password: YES)
+
+Time : 03:54:32
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 03:54:13
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 03:54:11
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 03:51:32
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 03:47:32
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 03:47:02
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 03:43:31
+SQLSTATE[HY000] [1045] Access denied for user 'pdo'@'localhost' (using password: YES)
+
+Time : 02:45:15
+SQLSTATE[HY000] [1045] Access denied for user 'pdo'@'localhost' (using password: YES)
+
+Time : 02:27:36
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 02:27:29
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 02:26:02
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 02:24:44
+SQLSTATE[HY000] [1045] Access denied for user 'qwe'@'localhost' (using password: YES)
+
+Time : 02:21:31
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 02:20:26
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)
+
+Time : 02:15:00
+SQLSTATE[HY000] [1049] Unknown database 'database'
