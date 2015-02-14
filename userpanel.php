@@ -73,7 +73,8 @@ $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
         <h3 class="text-muted">用户中心</h3>
       </div>
 
-<p class="text-center" style="font-size:14px;margin-bottom:-15px">后台为测试版 功能暂不完善 加密方式为:RC4-MD5 旧金山:sfo.404notfound.cc 新加坡:sgp.404notfound.cc</p>
+<p class="text-center" style="font-size:14px;margin-bottom:-15px">加密方式为:RC4-MD5 旧金山(电信用户):sfo.404notfound.cc 新加坡(联通及铁通用户):
+	sgp.404notfound.cc</p>
       <div class="jumbotron" style="background-color:#FFF">
 
             <div role="tabpanel">
@@ -130,9 +131,9 @@ $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
         <div class="col-lg-12">
         	<p class="text-center"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></p>
         	<p class="text-center">x.流量均指本月已使用流量,从本月1号开始计算.</p>
-            <p class="text-center">x.流量使用完毕系统将会自动冻结账号.</p>
-
-        	<p class="text-center"><button type="button" class="btn btn-success">更改资料</button></p>
+          	<p class="text-center">x.流量使用完毕系统将会自动冻结账号.</p>
+		<p class="text-center">x.重置密码请使用密码找回功能，同时SS密码将一并重置！</p>
+        	<p class="text-center"><a href="forgot.php" target="_blank" type="button" class="btn btn-success">重置密码</a></p>
         </div>
       </div>
 
