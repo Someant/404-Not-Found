@@ -16,3 +16,7 @@ import sql.sql</p>
 
 <p>step 2:<br>edit config.php mysql connection</p>
 
+<h4>Update(<a href="http://404notfound.cc" target="_blank">Chinese Version</a>):</h4>
+<p>2015.2.14-x-Add find password page(Change ss password when you reset account password)</p>
+<p background="#eee">Send email need host support function mail(),you can install sendmail or postfix.</p>
+
