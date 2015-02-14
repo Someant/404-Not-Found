@@ -12,9 +12,14 @@ About:
 <p>userpanel page service infomation need istall munin</p>
 
 <p>step 1:<br>
+### step 1
 import sql.sql</p>
+###
 
-<p>step 2:<br>edit config.php mysql connection</p>
+<p>step 2:<br>
+### step 2
+edit config.php mysql connection</p>
+###
 
 <h4>Update(<a href="http://404notfound.cc" target="_blank">Chinese Version</a>):</h4>
 <p>2015.2.14</p>
