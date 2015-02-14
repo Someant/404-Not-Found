@@ -11,13 +11,12 @@ About:
 
 <p>userpanel page service infomation need istall munin</p>
 
-<p>step 1:<br>
 ### step 1
+<p>step 1:<br>
 import sql.sql</p>
 ###
-
-<p>step 2:<br>
 ### step 2
+<p>step 2:<br>
 edit config.php mysql connection</p>
 ###
 
