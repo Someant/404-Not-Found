@@ -1,5 +1,6 @@
 ﻿<?php
 
+
 $myusername=NULL;
 $errowinfo=NULL;
 
@@ -97,18 +98,32 @@ $DB->CloseConnection();
                             <input type="password" class="form-control" name="password" />
                         </div>
                     </div>
+										<?php
+										//robot/
+										/*
+										if($errownum>4)
+										{
+											echo	'<div class="form-group">
+														<label class="col-sm-3 control-label" id="captchaOperation"></label>
+														<div class="col-sm-2">
+														<input type="text" class="form-control" name="captcha" />
+														</div>
+														</div>';
+														//echo '1111';
+										}else{echo null;}*/
 
+										?>
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
                             <button type="submit" class="btn btn-primary" name="signup" value="submit">登陆</button>
-
+														<span><a href="forgot.php"> -忘记密码-</a></span>
                         </div>
                     </div>
       </form>
       </div>
 
       <footer class="footer">
-        <p>&copy; 404NOTFOUND 2015</p>
+				<p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
       </footer>
 
     </div> <!-- /container -->
@@ -120,6 +135,11 @@ $DB->CloseConnection();
     <script type="text/javascript">
 
 $(document).ready(function() {
+	// Generate a simple captcha
+function randomNumber(min, max) {
+return Math.floor(Math.random() * (max - min + 1) + min);
+};
+$('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
     $('#loginForm').formValidation({
         message: 'This value is not valid',
         icon: {
@@ -138,7 +158,30 @@ $(document).ready(function() {
                         message: '请输入正确的邮箱地址！'
                     }
                 }
-            }
+            },
+						captcha: {
+										validators: {
+										callback: {
+										message: 'Wrong answer',
+										callback: function(value, validator, $field) {
+										var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+										return value == sum;
+										}
+										}
+										}
+										},
+						password: {
+											validators: {
+													notEmpty: {
+									message:'密码不能为空'
+									},
+													stringLength: {
+															min: 6,
+															max: 18,
+															message:'密码长度在6-18位'
+														}
+													}
+												}
 
 
 
