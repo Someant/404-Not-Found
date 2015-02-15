@@ -131,14 +131,14 @@ $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
         <div class="col-lg-12">
         	<p class="text-center"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></p>
         	<p class="text-center">x.流量均指本月已使用流量,从本月1号开始计算.</p>
-          	<p class="text-center">x.流量使用完毕系统将会自动冻结账号.</p>
-		<p class="text-center">x.重置密码请使用密码找回功能，同时SS密码将一并重置！</p>
+          <p class="text-center">x.流量使用完毕系统将会自动冻结账号.</p>
+					<p class="text-center">x.重置密码请使用密码找回功能，同时SS密码将一并重置！</p>
         	<p class="text-center"><a href="forgot.php" target="_blank" type="button" class="btn btn-success">重置密码</a></p>
         </div>
       </div>
 
       <footer class="footer">
-        <p>&copy; 404NOTFOUND 2015</p>
+				<p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
       </footer>
 
     </div> <!-- /container -->
