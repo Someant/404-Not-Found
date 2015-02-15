@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		 $DB->query("UPDATE gift SET status =? , usetime=? WHERE number=?", array(0,$time,$code));
 
 		//密码加密处理
-		$pass=MD5($pass.'404notfound');
+     $pass=MD5($pass.'404notfound');
 
 		 //创建随机端口且大于10000 并且给定6位随机密码
 		 $port=rand(50000,59999);
@@ -161,7 +161,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       </div>
 
       <footer class="footer">
-        <p>&copy; 404NOTFOUND 2015</p>
+        <p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
       </footer>
 
     </div> <!-- /container -->
