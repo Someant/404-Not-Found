@@ -137,7 +137,7 @@ else {
       </div>
 
       <footer class="footer">
-        <p>&copy; 404NOTFOUND 2015</p>
+        <p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
       </footer>
 
     </div> <!-- /container -->
