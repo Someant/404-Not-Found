@@ -13,6 +13,13 @@ You can use it if the back-end  use manyuser
 
 <p>userpanel page service infomation need istall munin</p>
 
+#UserPanel
+<img src="http://ww4.sinaimg.cn/mw690/b1209f59gw1eqzn2nzpq5j20n10jkwfw.jpg">
+
+#Administrator Page
+<img src="http://ww1.sinaimg.cn/mw690/b1209f59gw1eqzn2pgcabj20n10jktax.jpg">
+<img src="http://ww4.sinaimg.cn/mw690/b1209f59gw1eqzn2ohds6j20n10jkwfy.jpg">
+
 
 #step 1:
 import sql.sql
@@ -22,6 +29,6 @@ import sql.sql
 edit config.php mysql connection</p>
 
 
-#Update(<a href="http://404notfound.cc" target="_blank">Chinese Version</a>):</h4>
+#Update(<a href="http://404notfound.cc/about.html" target="_blank">Chinese Version</a>):</h4>
 <p>2015.2.14</p>
 <p style="background:#eee">Add find password page(Change ss password when you reset account password).</br>Send email need host support function mail(),you can install sendmail or postfix.</p>
