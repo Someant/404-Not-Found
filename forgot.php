@@ -1,6 +1,4 @@
 ﻿<?php
-
-
 $myusername=NULL;
 $errowinfo=NULL;
 $row='<form class="form-horizontal" role="form" id="loginForm" method="post">
@@ -61,14 +59,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $DB->CloseConnection();
 
 		//mail函数预留
-    $to = $myusername;
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
     $subject = '404NotFound-密码找回';
     $message = '请点击下面的链接进行密码重置，24小时内有效！'.$url;
-    $from = "www@someant.com";
-    $headers = "From: $from";
-    mail($to,$subject,$message,$headers);
+    sendmail($myusername,$subject,$message);
  }
 else {
 	$errowinfo="请输入正确的邮箱地址！";$DB->CloseConnection();
@@ -108,6 +101,8 @@ else {
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>

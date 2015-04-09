@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 date_default_timezone_set('prc');
 $successinfo=NULL;
 $myusername=$_GET['email'];
@@ -27,7 +27,7 @@ if($mt==$token)
 		$conpass=$_POST['confirmPassword'];
 		if($pass==$conpass and (strtotime($time)-strtotime($lasttime))/3600<24)
 		{
-			$DB->query("UPDATE user SET pass =? , passwd=? WHERE email=?", array(MD5($pass.'404notfound'),rand(100000,999999),$myusername));
+			$DB->query("UPDATE user SET pass =?  WHERE email=?", array(MD5($pass.'404notfound'),$myusername));
 			$DB->CloseConnection();
 			$errowinfo=NULL;
 			$successinfo='<a href="login.php">重置成功！点此跳转到登陆界面！</a>';
@@ -37,7 +37,7 @@ if($mt==$token)
 }
 else
 {
-	$errowinfo='失效链接或链接错误！';
+	$errowinfo='失效链接或者链接错误！';
 
 
 }
@@ -53,6 +53,8 @@ else
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
@@ -116,7 +118,7 @@ else
       </div>
 
       <footer class="footer">
-				<p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
+        <p>&copy; 404NOTFOUND 2015</p>
       </footer>
 
     </div> <!-- /container -->

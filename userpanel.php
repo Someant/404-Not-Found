@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
@@ -21,35 +23,24 @@ require 'config.php';
 
 $tbl_name="user"; // Table name
 
-$vpnflow=NULL;
-$vpnflow=NULL;
-$vpnpass=NULL;
 $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
 
-	  $vpnuser=$row['vpnuser'];
-	  $vpnpass=$row['vpnpass'];
-	  //$vpnflow=$row['vpnflow'];
-	  $sspass=$row['passwd'];
-	  $ssflow=$row['u']+$row['d'];
-	  $port=$row['port'];
-	  $endtime=$row['endtime'];
 
-  $totalflow=$ssflow+$vpnflow;
+	$sspass=$row['passwd'];
+	$ssflow=$row['u']+$row['d'];
+	$port=$row['port'];
+	$endtime=$row['endtime'];
+	$totalflow=$row['transfer_enable'];
+	$lv=$row['level'];
 
+	$errowinfo=NULL;
+	$successinfo=NULL;
   $ssflow=sprintf("%.2f", $ssflow/(1024*1024));
-  if($vpnuser==null)
-  {
-
-	  $vpnuser='该账户并未开通VPN服务';
-	  $vpnpass='需要开通请与管理员联系';
-	  $vpnflow='暂无数据';
-	  $totalflow='VPN数据暂时无法统计';
-  }
-
+	$totalflow=sprintf("%.0f", $totalflow/(1024*1024));
 
 
  // mysql_close();
- $DB->CloseConnection();
+	$DB->CloseConnection();
 ?>
     <div class="container">
       <div class="header">
@@ -73,58 +64,27 @@ $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
         <h3 class="text-muted">用户中心</h3>
       </div>
 
-<p class="text-center" style="font-size:14px;margin-bottom:-15px">加密方式为:RC4-MD5 旧金山(电信用户):sfo.404notfound.cc 新加坡(联通及铁通用户):
-	sgp.404notfound.cc</p>
-      <div class="jumbotron" style="background-color:#FFF">
+<p class="text-center" style="font-size:14px;margin-bottom:-15px">加密方式为:RC4-MD5 取消原来的SGP节点 HK为测试节点 也可以正常使用 加密方式为aes-256-cfb</p>
 
-            <div role="tabpanel">
-
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">旧金山</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">新加坡</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">洛杉矶</a></li>
-
-              </ul>
-
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">
-                	<img class="img-responsive" src="http://info.404notfound.cc/sfo/sfo/fw_conntrack-day.png" style="margin:5px auto;">
-                </div>
-                <div role="tabpanel" class="tab-pane" id="profile">
-                	<img class="img-responsive" src="http://info.404notfound.cc/sgp/sgp/fw_packets-day.png" style="margin:5px auto;">
-                </div>
-                <div role="tabpanel" class="tab-pane" id="messages"><p class="text-center">暂无数据</p></div>
-
-              </div>
-
-            </div>
-      </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
 
-          <h4>VPN账号</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $vpnuser ?>" name="vpnuser"></p>
+          <h4>二维码<small> APP可以扫描下面的二维码快速完成配置</small></h4>
 
-          <h4>VPN密码</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $vpnpass ?>" name="vpnpass"></p>
-
-          <h4>VPN流量</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $vpnflow ?>" readonly></p>
+					<p><?php require  'qrcode.php'; ?></p>
         </div>
 
 
         <div class="col-lg-6">
+          <h4>SS端口</h4>
+          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $port ?>" readonly></p>
+
           <h4>SS密码</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $sspass ?>" name="vpnpass"></p>
+          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $sspass ?>" readonly></p>
 
-          <h4>SS端口及流量</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $port.' : '.$ssflow.'MB' ?>" readonly></p>
-
-          <h4>总流量</h4>
-          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $totalflow ?>" readonly></p>
+          <h4>流量</h4>
+          <p><input type="email" class="form-control" id="inputEmail3" placeholder="<?php echo $ssflow.'/'.$totalflow.'MB' ?>" readonly></p>
 
         </div>
 
@@ -136,6 +96,7 @@ $row = $DB->row("SELECT * FROM user WHERE email=?",array($user));
         	<p class="text-center"><a href="forgot.php" target="_blank" type="button" class="btn btn-success">重置密码</a></p>
         </div>
       </div>
+
 
       <footer class="footer">
 				<p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>

@@ -1,0 +1,2 @@
+Time : 13:59:06
+SQLSTATE[HY000] [1045] Access denied for user 'shadowsocks'@'localhost' (using password: YES)

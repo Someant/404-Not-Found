@@ -1,13 +1,12 @@
 ﻿<?php
 
-
 $myusername=NULL;
 $errowinfo=NULL;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	 $myusername=$_POST['email'];
-   		 $mypassword=$_POST['password'];
+   $mypassword=$_POST['password'];
 
 
 require 'config.php';
@@ -25,7 +24,7 @@ echo '登陆成功';
 $DB->CloseConnection();
  session_start();
  $_SESSION['myusername']=$myusername;
-  $_SESSION['mypassword']=$mypassword;
+ $_SESSION['mypassword']=$mypassword;
 // session_register("mypassword");
  header("location:userpanel.php");
  }
@@ -46,6 +45,8 @@ $DB->CloseConnection();
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
@@ -123,7 +124,7 @@ $DB->CloseConnection();
       </div>
 
       <footer class="footer">
-				<p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
+        <p>&copy; 404NOTFOUND 2015</p>
       </footer>
 
     </div> <!-- /container -->

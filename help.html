@@ -6,6 +6,8 @@
      <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" />
      <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
      <link rel="stylesheet" href="style.css" />
+     <!-- Custom styles for this template -->
+
      <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
      <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
  </head>
@@ -35,13 +37,60 @@
      <!-- Tab panes -->
      <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="ios">
-       <p>目前IOS如果未越狱SS无法全局，如果APP需要试用建议使用&quot;微屁恩&quot;.</p>
-       <p>在常规设置里面找到&quot;微屁恩&quot;选项-选择PPTP协议</p>
-       <p>描述：随意<br />服务器：域名或IP<br />账号和密码可以在用户中心查看<br />建议加密层级选择&quot;自动&quot;,最下面的代理设置选择“关闭”某则会出现连不上的情况 <img class="img-responsive" src="http://ww3.sinaimg.cn/mw690/b1209f59jw1eoofaey98rj20f10qp75v.jpg" /> </p>
+        <p><strong>实现iOS设备全局代理的思路</strong><br /><em>思路1</em>：</p>
+ <ul>
+  <li>在iOS设备安装Shadowsocks app。</li>
+  <li>为iOS设备设置全局代理。</li>
+  <li>为Shadowsocks app设置后台常驻。</li>
+ </ul>
+ <p><em>思路2</em>：</p>
+ <ul>
+  <li>越狱安装shadowsocks完整版</li>
+  <li>配置shadowsocks在应用内的服务</li>
+ </ul>
+ <p><strong>两种思路的比较</strong><br />第一种是使用在app stroe上架的应用来进行操作，优点是可以直接使用，无需自己配置服务器；<br />第二种是使用越狱后的版本，优点表面上不用是一个app常驻后台，缺点是需要自己配置服务器。</p>
+ <p><em>说明</em></p>
+ <p>1.Shadowsocks app作为一个在苹果应用商店上架的应用，它必须遵循苹果应用的相关规定，即后台不能常驻，也就是说在不越狱的情况下，它</p>
+ <blockquote>
+  <p>Only works for a few minutes. Due to iOS restrictions, Shadowsocks can’t keep running in the background. It’s killed after you leave it for a while. To keep it running for an extended period of time, you have to come back to the Shadowsocks app every few minutes.</p>
+ </blockquote>
+ <p>所以，我们进行完美体验的前提是你的iOS设备已经越狱。如果你的设备没有越狱，你只有在按照以下教程操作好了过后几分钟（大都在10分钟内）<br />再次打开Shadowsocks app。</p>
+ <p>2.Shadowsocks作为一个代理服务，它一般需要在服务端进行配置，一般的用户并不拥有一个支持Shadowsocks的服务器。不过好在Shadowsocks的支持社区相当成熟，它们提供免费的服务来支持和推广Shadowsocks的服务。而我们将要使用的Shadowsocks app也会根据情况为你分配相关服务器。当然免费的服务器稳定性和速度肯定会差一点，但已经很够用了。如果你想配置你的私有服务器，请加入相关社区进行进一步学习。</p>
+ <p>3.目前仅支持Wi-Fi下的全局代理服务。</p>
+ <h1 id="00，准备工作">00，准备工作</h1>
+ <ul>
+  <li>iOS设备（未越狱，各个版本均可）</li>
+  <li>iOS设备（越狱，我们使用的插件目前支持到iOS7）</li>
+  <li>Shadowsocks iOS App <a href="https://itunes.apple.com/us/app/shadowsocks/id665729974?ls=1&amp;mt=8" target="_blank" rel="external">点我下载</a></li>
+  <li>插件Background Manager</li>
+  <li>插件shadowsocks和shadowsocks per-app plugin</li>
+ </ul>
+ <h1 id="01，安装Shadowsocks_iOS_App，并在Wi-Fi选项中设置代理">01，安装Shadowsocks iOS App，并在Wi-Fi选项中设置代理</h1>
+ <p>首先，我们打开App Store，搜索到Shadowsocks<br /><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2dzpAbXXXXXX3XXXXXXXXXXXX_!!665732193.png" alt="" /></p>
+ <p>下载、安装后发现，出现了一个纸飞机的图标，就是它啦~<br /><img class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2cFJAbXXXXXanXXXXXXXXXXXX_!!665732193.png" alt="" /></p>
+ <p>打开它，我们看到的应该是一个类似于浏览器的东西，而这也是这个Shadowsocks做这个app的主要功能。在这个浏览器里，你就能够实现代理了，但我们要做的是全局代理，所以我们继续。看到右边的选项按钮，打开之，可以看到一些选项，都可以打开看看。<br /><img class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2Oe8zbXXXXXaTXXXXXXXXXXXX_!!665732193.png" alt="" /><br />而这里，我们打开选项这一栏看看。发现，这正是我们要找的服务器配置所在地。而前面已经说了，我们可以直接使用Shadowsocks社区的代理服务，所以根本不需要我们的配置。<br /><img class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2AoZHXpXXXXbPXpXXXXXXXXXX_!!665732193.png" alt="" /><br />如果你有自己的服务器，你可以选择自行按如下方式配置。<br /><img class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2ZUgqXVXXXXcLXpXXXXXXXXXX_!!665732193.png" alt="" /><br />至此，我们已经完成了对app的配置。（好吧，根本没有配置好么~）<br />接下来，我们进行全局代理设置。我们打开设置—Wi-Fi一栏，点开右边那个感叹号设置按钮。<br /><img  class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2Ik0AbXXXXXadXXXXXXXXXXXX_!!665732193.png" alt="" /><br />找到下面HTTP代理的设置项，将其设置为<strong>自动</strong>，并填写如下代理地址<br /><code>http://127.0.0.1:8090/proxy.pac</code><br /><img class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB277VqbXXXXXaPXpXXXXXXXXXX_!!665732193.png" alt="" /><br />然后点击上面Wi-Fi返回，这时候，会出现一两秒的配置时间，你所连接的WiFi会出现loading画面（也就是转菊花），完成后会自动连上Wi-Fi。<br />至此，我们已经设置好了全局代理的配置。想尝鲜的同学打开Safari或者Twitter、Facebook、YouTube的客户端就发现，卧槽，真特么可以。<br />在Safari下自然是可以的<br /><img class="img-responsive" class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2r4XzbXXXXXa2XXXXXXXXXXXX_!!665732193.png" alt="Safari" /><br />在各个客户端下表现也不错<br /><img class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2gslxbXXXXXcsXXXXXXXXXXXX_!!665732193.png" alt="Twitter" /><br /><img class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2TxSeXpXXXXXNXFXXXXXXXXXX_!!665732193.png" alt="instagram" /><br /><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2O_drbXXXXXaAXpXXXXXXXXXX_!!665732193.png" alt="u2b" /></p>
+ <p><strong>目前，我们已经完成了配置，功能是可以使用的。</strong>但正如前文所说，由于iOS自身的限制和Shadowsocks app代理方式的限制，我们必须得让Shadowsocks app一直保持开启才可以实现全局代理。如果通常十分钟以后iOS就会自动退出后台的一些第三方应用，那么Shadowsocks app自然也会被退出。这就导致了我们需要过一会就去打开一次Shadowsocks app，平时刷刷推特还是可以接受，但强迫症肯定很不爽，所以我们就得使用一个插件来让这个app，在我使用我的设备期间一直保持运行。</p>
+ <hr />
+ <p><em>
+   <del>
+    iOS8及
+   </del>未越狱设备请忽略以下内容</em></p>
+
+        <h1 id="02-1，cydia内安装shadowsocks和shadowsocks_per-app_plugin，并配置好服务器">02-1，cydia内安装shadowsocks和shadowsocks per-app plugin，并配置好服务器</h1>
+        <p><strong>注意：这个操作并不需要在app store内下载相关应用，我们在cydia内下载相关插件</strong><br />首先，在cydia内搜索shadowsocks<br /><img class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB25mvHbXXXXXbdXXXXXXXXXXXX_!!665732193.png" alt="" /><br />我们就可以看到我们需要的两个插件，免费。然后下载、安装即可。<br />安装后，打开安装的插件，注意，我们在桌面只能看到一个叫“影梭”的图标，打开它<br /><img class="img-responsive" class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2zh_IbXXXXXbUXXXXXXXXXXXX_!!665732193.png" alt="" /><br />点击启用代理，配置好你的shadowsocks服务器地址和加密方式<br /><img class="img-responsive" class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2_0fGbXXXXXaJXpXXXXXXXXXX_!!665732193.png" alt="" /><br />然后就可以设置应用内代理了，点击“应用内代理”<br /><img class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB29tYIbXXXXXXTXXXXXXXXXXXX_!!665732193.png" alt="" /><br />点进去就进入了插件per-app的设置界面<br /><img src="http://img01.taobaocdn.com/imgextra/i1/665732193/TB2I5LGbXXXXXaeXpXXXXXXXXXX_!!665732193.png" alt="" /><br />我们点击启用，并禁用SPDY协议（原因它说得很清楚）。然后打开下方的绕行模式，并在“应用程序里”开启我们不需要走shadowsocks代理的应用即可。<strong>注意，这里的应用程序开启的是不走代理的程序，注意区分。</strong></p>
+        <h4 id="02-3，安装background_manager，并配置好后台运行规则。">02-3，安装background manager，并配置好后台运行规则。<span class="label-danger">此步骤为非必须</span></h4>
+        <p>安装插件的前提是我们的iOS设备必须越狱并运行完好。<br />首先，在Cydia里搜索background manager<br /><img  class="img-responsive" class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2gb0ubXXXXXc0XXXXXXXXXXXX_!!665732193.png" alt="" /><br />正版的此插件需要6元进行购买，但目前对支付宝的支持还不是很好，我们选择在178源（后面给出地址）里进行安装（体验无罪，但请尽量支持正版）。<br /><img class="img-responsive" class="img-responsive" src="http://img01.taobaocdn.com/imgextra/i1/665732193/TB2YcxybXXXXXbOXXXXXXXXXXXX_!!665732193.png" alt="" /><br />你也可以一并选择威锋技术组出品的汉化补丁<br /><img class="img-responsive" class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2L9BAbXXXXXafXXXXXXXXXXXX_!!665732193.png" alt="" /><br />一并安装完成后，respring注销下即可进入主界面。<br />然后，我们在设置里找到相关项目-后台运行管理器<br /><img  class="img-responsive" src="http://img03.taobaocdn.com/imgextra/i3/665732193/TB2JdxtbXXXXXX1XpXXXXXXXXXX_!!665732193.png">打开之~<br><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB29d8CbXXXXXcIXXXXXXXXXXXX_!!665732193.png" alt=""><br>选择指定应用设置，并选择添加项目<br><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2K1lCbXXXXXbMXXXXXXXXXXXX_!!665732193.png" alt=""><br>添加Shadowsocks到该规则<br><img class="img-responsive" class="img-responsive" src="http://img02.taobaocdn.com/imgextra/i2/665732193/TB2Xr8wbXXXXXXhXpXXXXXXXXXX_!!665732193.png" alt=""><br>返回发现，该规则目录下已经出现Shadowsocks一则，并注明后台规则还是原生<br><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB2HgBubXXXXXXrXpXXXXXXXXXX_!!665732193.png" alt=""><br>点击Shadowsocks，发现的确为原生的后台模式<br><im class="img-responsive" src="http://img01.taobaocdn.com/imgextra/i1/665732193/TB2puFCbXXXXXbeXpXXXXXXXXXX_!!665732193.png" alt=""><br>我们进行选择，选择“后台”一栏<br><img class="img-responsive" src="http://img04.taobaocdn.com/imgextra/i4/665732193/TB22tBBbXXXXXX1XXXXXXXXXXXX_!!665732193.png" alt=""><br>然后返回，发现，当前后台规则已经变为“后台”<br><img class="img-responsive" src="http://img01.taobaocdn.com/imgextra/i1/665732193/TB22T8sbXXXXXXBXpXXXXXXXXXX_!!665732193.png" alt=""><br>而至此，我们已经完成了使Shadowsocks app常驻后台的配置工作，你也可以对background manager插件继续进行相关样式的设置，请自行探索。<br><img class="img-responsive" src="http://img01.taobaocdn.com/imgextra/i1/665732193/TB25K0ubXXXXXc2XXXXXXXXXXXX_!!665732193.png" alt=""></p>
+        <p>完成配置后，我们可以返回重新打开Shadowsocks app，然后就会发现，在我们使用Shadowsocks app进行全局代理时，只要不自行退出后台，我们的全局代理会一直进行下去，即使你进行了<strong>锁屏操作</strong>。当然，由后台管理插件完成的服务必然会存在<strong>不稳定</strong>因素，也可能会导致<strong>机身发热量增加</strong>，<strong>电池消耗过快</strong>等问题，这就仁者见仁智者见智了哈~</p>
+        <ul>
+          <li>178源-apt.178.com</li>
+          <li>威锋精品源- repo.feng.com</li>
+          <li>文章引自<a href="http://jas0n.me/2014/11/12/up_14_11_12/" target="_blank">Jas0ndyq</a>(对原文有所调整)</li>
+          <li>文中方法经测试可以正常使用</li>
+        </ul>
       </div>
       <div role="tabpanel" class="tab-pane" id="android">
        <p>安卓建议使用SS方式,需要安装SS客户端：<a href="http://pan.baidu.com/s/1kTvapgV" target="_blank">网盘下载</a>,最新版下载.</p>
-       <p> 安装好客户端之后，配置文件可以随便填主要是方便记忆<br />服务器：域名或IP<br />远程端口：具体端口可以在用户中心查看<br />密码：SS密码<br />路由：建议选择第三个绕过局域网及中国大陆网站(这样你连着SS的时候刷国内网站不会导致速度变慢) <img class="img-responsive" src="http://ww2.sinaimg.cn/mw690/b1209f59jw1eooeblts7rj20m80zkmz5.jpg" /></p>
+       <p> 安装好客户端之后，配置文件可以随便填主要是方便记忆<br />服务器：域名或IP<br />远程端口：具体端口可以在用户中心查看<br />密码：SS密码<br />路由：建议选择第三个绕过局域网及中国大陆网站(这样你连着SS的时候刷国内网站不会导致速度变慢) <img class="img-responsive"  src="http://ww2.sinaimg.cn/mw690/b1209f59jw1eooeblts7rj20m80zkmz5.jpg" /></p>
       </div>
       <div role="tabpanel" class="tab-pane" id="win7">
        <p>WINDOWS和MAC下建议使用SS方式，浏览更智能,需要配合Firefox或Chrome使用</p>

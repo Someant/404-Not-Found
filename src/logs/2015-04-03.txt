@@ -1,0 +1,3 @@
+Time : 23:38:14
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'email' cannot be null
+Raw SQL : INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)

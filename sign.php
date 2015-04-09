@@ -1,9 +1,11 @@
 ﻿<?php
 //解决date函数时差问题
  date_default_timezone_set('prc');
+
  $errowinfo=NULL;
  $successinfo=NULL;
-
+ //$signcode=$_GET['signcode'];
+ $signcode = isset($_GET['signcode']) ? $_GET['signcode'] : '';
 // 获取注册表单的值
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -43,8 +45,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		//密码加密处理
      $pass=MD5($pass.'404notfound');
 
-		 //创建随机端口且大于10000 并且给定6位随机密码
-		 $port=rand(50000,59999);
+		 //创建随机端口 并且给定6位随机密码
+		 $port=rand($portwidth[0],$portwidth[1]);
 		 $ranpass=rand(100000,999999);
 		  //检查端口是否被占用
 		 $total=1;
@@ -56,17 +58,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
 			 $port=rand(10000,99999);
 		 }
+     $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
+     $addtime=$rowmonth['month'];
+     $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
 		//执行SQL语句 插入数据
-
-			$DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type) VALUES(?,?,?,?,?,?)", array($email,$pass,$ranpass,10737418240,$port,7));
+      $beginflow=$beginflow*1024*1024;
+			$DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,4));
 
 			$successinfo='<a href="login.php">注册成功！点此跳转到登陆界面！</a>';
 			$errowinfo=NULL;
       $DB->CloseConnection();
  			}
- 			else{$errowinfo='邮箱已被注册！';$successinfo=NULL;$successinfo=NULL;$email=$_POST['email']=$code=$_POST['signcode']=NULL;}
+ 			else{$errowinfo='邮箱已被注册！';}
  }
- else{$errowinfo='注册码不正确或已被使用';$successinfo=NULL;$email=$_POST['email']=$code=$_POST['signcode']=NULL;}
+ else{$errowinfo='注册码不正确或已被使用';}
 
 }
 
@@ -80,6 +85,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
@@ -142,7 +149,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                     <div class="form-group">
                         <label class="col-sm-3 control-label">注册码</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="signcode" />
+                            <input type="text" class="form-control" name="signcode"  value="<?php echo $signcode; ?>"  />
                         </div>
 
                     </div>
@@ -263,8 +270,8 @@ $(document).ready(function() {
                     },
                    stringLength: {
                         min: 6,
-                        max: 6,
-						message:'注册码长度只有6位'
+                        max: 12,
+						message:'注册码长度为6-12位'
                     },
               /*      remote: {
                         type: 'POST',

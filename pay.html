@@ -1,0 +1,167 @@
+<html lang="zh-CN">
+ <head></head>
+ <body>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pay-404 Not Found</title>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+  <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Custom styles for this template -->
+
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <div class="container">
+   <div class="header">
+    <nav>
+     <ul class="nav nav-pills pull-right">
+      <li role="presentation"><a href="index.html">首页</a></li>
+      <li role="presentation"><a href="about.html">关于</a></li>
+      <li role="presentation"><a href="sign.php" target="_blank">注册</a></li>
+     </ul>
+    </nav>
+    <h3 class="text-muted">404 Not Found</h3>
+   </div>
+   <div class="row marketing">
+    <p>目前依赖人工开通。</p>
+
+    <p>直接向支付账号 support@404notfound.cc 转账</p>
+
+    <p>支付完成后，请把订单号发送邮件至：support@404notfound.cc</p>
+    <p>对于本站有任何疑问均可发送邮件</p>
+    <h4>常见问题</h4>
+    <ul id="payli">
+     <li> <p>xx:支付方式有哪些？</p> <p>oo:支付宝和Paypal</p> </li>
+     <li> <p>xx:邮件发送后多久能收到注册码？</p> <p>oo:将在12小时之内会发送，起始日期从注册时开始生效</p> </li>
+     <li> <p>xx:如果不满意，可以申请退款么？</p> <p>oo:具体的退款事宜可以参考<a href="tos.html" target="“_blank”">Tos</a>页面</p> </li>
+     <li> <p>xx:为什么不使用联系表单</p> <p>oo:想通过邮件地址来验证用户(如判定是否为恶意用户)</p> </li>
+    </ul>
+   </div>
+   <footer class="footer">
+    <p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
+   </footer>
+  </div>
+  <!-- /container -->
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="./js/site.js"></script>
+  <script type="text/javascript">
+
+$(document).ready(function() {
+    $('#loginForm').formValidation({
+        message: 'This value is not valid',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: '邮箱不能为空！'
+                    },
+                    emailAddress: {
+                        message: '请输入正确的邮箱地址！'
+                    }
+                }
+            }
+
+
+
+        }
+  });
+
+  $('#signForm').formValidation({
+        message: 'This value is not valid',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: '邮箱不能为空！'
+                    },
+                    emailAddress: {
+                        message: '请输入正确的邮箱地址！'
+                    }
+                }
+            },
+     password: {
+                validators: {
+                    notEmpty: {
+            message:'密码不能为空'
+            },
+                    stringLength: {
+                        min: 6,
+                        max: 28,
+            message:'密码长度不小于6位'
+                    },
+
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    notEmpty: {
+            message:'密码不能为空'
+            },
+                    identical: {
+                        field: 'password',
+                        message: '两次密码输入不一致！'
+                    }
+                }
+            },
+       username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and can\'t be empty'
+                    },
+                    remote: {
+                        type: 'POST',
+                        url: 'check.php',
+                        message: 'The username is not available',
+                        delay: 1000
+                    }
+                }
+            },
+
+      signcode: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required and can\'t be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    },
+                    remote: {
+                        type: 'POST',
+                        url: 'remote.php',
+                        message: 'The email is not available',
+                        delay: 2000
+                    }
+
+
+
+
+          }
+
+
+        }
+
+
+    }
+    });
+
+
+
+});
+</script>
+ </body>
+</html>
