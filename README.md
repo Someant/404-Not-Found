@@ -28,7 +28,9 @@ import sql.sql
 #step 2:
 edit config.php mysql connection</p>
 
+#step 3:
+edit qrcode.php show your QR coder  on userpanel 
 
-#Update(<a href="http://404notfound.cc/about.html" target="_blank">Chinese Version</a>):</h4>
+#Update(<a href="http://www.someant.com/1381" target="_blank">Chinese Version</a>):</h4>
 <p>2015.2.14</p>
 <p style="background:#eee">Add find password page(Change ss password when you reset account password).</br>Send email need host support function mail(),you can install sendmail or postfix.</p>
