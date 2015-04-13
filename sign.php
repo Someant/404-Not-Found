@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
      $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
 		//执行SQL语句 插入数据
       $beginflow=$beginflow*1024*1024;
-			$DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,4));
+			$DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,1));
 
 			$successinfo='<a href="login.php">注册成功！点此跳转到登陆界面！</a>';
 			$errowinfo=NULL;

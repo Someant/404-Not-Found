@@ -11,6 +11,12 @@ You can use it if the back-end  use manyuser
 
 <p>Demo:<a href="http://404notfound.cc/" target="_blank">404notfound.cc</a></p>
 
+#Test data
+
+####Default User account：demo@demo    123456
+####Default Administrator account:demo  123456
+####Default Gift card:123456
+
 <p>userpanel page service infomation need istall munin</p>
 
 #UserPanel

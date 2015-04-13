@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-04-12 17:03:26
+-- Generation Time: 2015-04-13 15:46:35
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,7 +32,14 @@ CREATE TABLE IF NOT EXISTS `ad` (
   `pass` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `ad`
+--
+
+INSERT INTO `ad` (`id`, `user`, `pass`) VALUES
+(2, 'demo', 'a7e54235c76dcc0d3bb326480ab00794');
 
 -- --------------------------------------------------------
 
@@ -47,7 +54,14 @@ CREATE TABLE IF NOT EXISTS `gift` (
   `month` int(11) NOT NULL DEFAULT '1',
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+
+--
+-- 转存表中的数据 `gift`
+--
+
+INSERT INTO `gift` (`Id`, `number`, `usetime`, `month`, `status`) VALUES
+(35, '123456', '2015-04-13 09:45:07', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -74,7 +88,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `signtime` datetime NOT NULL,
   `level` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`,`port`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `pass`, `passwd`, `t`, `u`, `d`, `transfer_enable`, `port`, `switch`, `enable`, `type`, `last_get_gitf_time`, `last_rest_pass_time`, `endtime`, `signtime`, `level`) VALUES
+(43, 'demo@demo', 'a7e54235c76dcc0d3bb326480ab00794', '292315', 0, 0, 0, 10737418240, 51173, 1, 1, 7, 0, NULL, '2015-05-13', '2015-04-13 09:45:07', 4);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
