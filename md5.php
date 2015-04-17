@@ -18,6 +18,6 @@ date_default_timezone_set('prc');
    $url = '1111';
 
     $time = date('Y-m-d H:i');
-    $email='2275277266@qq.com';
+  
     $result = sendmail($time,$email,$url);
 ?>
