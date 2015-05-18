@@ -1,11 +1,10 @@
 ﻿<?php
 //解决date函数时差问题
- date_default_timezone_set('prc');
+date_default_timezone_set('prc');
 
- $errowinfo=NULL;
- $successinfo=NULL;
- //$signcode=$_GET['signcode'];
- $signcode = isset($_GET['signcode']) ? $_GET['signcode'] : '';
+$errowinfo=NULL;
+$successinfo=NULL;
+$signcode = isset($_GET['signcode']) ? $_GET['signcode'] : '';
 // 获取注册表单的值
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -37,39 +36,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		 if($total==0)
 		 {
 
-			//更新注册码状态
+		     //更新注册码状态
 
-		 $time=date('y-m-d h:i:s',time());
-		 $DB->query("UPDATE gift SET status =? , usetime=? WHERE number=?", array(0,$time,$code));
-
-		//密码加密处理
-     $pass=MD5($pass.'404notfound');
-
-		 //创建随机端口 并且给定6位随机密码
-		 $port=rand($portwidth[0],$portwidth[1]);
-		 $ranpass=rand(100000,999999);
-		  //检查端口是否被占用
-		 $total=1;
-		 while($total!=1)
-		 {
-			 /*$sqlport=mysql_query("SELECT * FROM user WHERE port='".$port."'");
-			 $resultport = mysql_query($sqlport);
-			 $total=mysql_num_rows($resultport);*/
-			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
-			 $port=rand(10000,99999);
-		 }
-     $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
-     $addtime=$rowmonth['month'];
-     $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
-		//执行SQL语句 插入数据
-      $beginflow=$beginflow*1024*1024;
-			$DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,1));
+    		 $time=date('y-m-d h:i:s',time());
+    		 $DB->query("UPDATE gift SET status =? , usetime=? WHERE number=?", array(0,$time,$code));
+    
+    		 //密码加密处理
+             $pass=MD5($pass.'404notfound');
+    
+    		 //创建随机端口 并且给定6位随机密码
+    		 $port=rand($portwidth[0],$portwidth[1]);
+    		 $ranpass=rand(100000,999999);
+    		 //检查端口是否被占用
+    		 $total=1;
+    		 while($total!=1)
+		     {
+    			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
+    			 $port=rand(10000,99999);
+		     }
+             $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
+             $addtime=$rowmonth['month'];
+             $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
+		     //执行SQL语句 插入数据
+             $beginflow=$beginflow*1024*1024;
+			 $DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,1));
 
 			$successinfo='<a href="login.php">注册成功！点此跳转到登陆界面！</a>';
 			$errowinfo=NULL;
-      $DB->CloseConnection();
- 			}
- 			else{$errowinfo='邮箱已被注册！';}
+            $DB->CloseConnection();
+ 		}
+ 		else{$errowinfo='邮箱已被注册！';}
  }
  else{$errowinfo='注册码不正确或已被使用';}
 

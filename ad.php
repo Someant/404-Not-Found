@@ -3,14 +3,14 @@ session_start();$user=@$_SESSION['aduser'];
 date_default_timezone_set('prc');
 error_reporting(E_ALL & ~E_NOTICE);
 if($user==NULL) header("location:index.html");
-//$rowad = $DB->row("SELECT * FROM ad WHERE user=?",array($user));
+
 //已知BUG 未定义404 将导致翻页超出 还继续显示
-  require 'config.php';
-  require 'functions.php';
-  $giftcard='';
-  //$email='';
-  if($_SERVER['REQUEST_METHOD'] == 'POST')
-  {
+require 'config.php';
+require 'functions.php';
+$giftcard='';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
     //修正添加流量bug
     $addflow=0;
     if(isset($_POST['id'])==1)
@@ -24,35 +24,43 @@ if($user==NULL) header("location:index.html");
 
       $addflow=$row['transfer_enable']+($addflow*1024*1024);
 
-          if($addtime!=NULL)
-          {
-            //判断用户时间状态
-            if($time-$row['endtime']>0)
-            {
+         if($addtime!=NULL)
+         {
+           //判断用户时间状态
+           if($time-$row['endtime']>0)
+           {
 
-              $endtime=date('Y-m-d',strtotime('+'.$addtime.' month'));
-            }
-            else
-            {
-              $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($row['endtime'])));
-            }
+             $endtime=date('Y-m-d',strtotime('+'.$addtime.' month'));
+           }
+           else
+           {
+             $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($row['endtime'])));
+           }
 
-            //修改用户信息
-            $DB->query("UPDATE user SET transfer_enable =? , endtime=? WHERE id=?", array($addflow,$endtime,$id));
-          }
-          else
-          {
-            $DB->query("UPDATE user SET transfer_enable =?  WHERE id=?", array($addflow,$id));
-          }
-    }
+           //修改用户信息
+           $DB->query("UPDATE user SET transfer_enable =? , endtime=? WHERE id=?", array($addflow,$endtime,$id));
+        }
+        else
+        {
+           $DB->query("UPDATE user SET transfer_enable =?  WHERE id=?", array($addflow,$id));
+        }
+     }
 
 
 
-    //处理gift
+    //处理giftcar
+    
     $month=1;
-    $giftcard=substr(MD5(rand(1,1000)),0,11);
-    //$email=isset($_POST['email']);
-    //echo $email;
+    $giftcard=substr(MD5(rand(1,1000000000).strtotime("now")),0,11);
+    $totalgift=count($DB->query("SELECT * FROM gift WHERE number=?", $giftcard));
+   
+   /*
+    while($totalgift>0)
+    {
+      $giftcard=substr(MD5(rand(1,1000000000)),0,11);
+      $totalgift=count($DB->query("SELECT * FROM user WHERE gift=?", $giftcard));
+    }*/
+    
     if($_POST['month']!=NULL)
     {
       $month=$_POST['month'];
@@ -71,7 +79,7 @@ http://404notfound.cc/sign.php?signcode='.$giftcard;
 
 
 
-  }
+}
 ?>
 <html lang="zh-CN">
  <head>
