@@ -17,8 +17,6 @@ You can use it if the back-end  use manyuser
 ####Default Administrator account:demo  123456
 ####Default Gift card:123456
 
-#### PHP>=5.4
-
 <p>userpanel page service infomation need istall munin</p>
 
 #UserPanel
