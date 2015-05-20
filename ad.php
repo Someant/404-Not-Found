@@ -51,10 +51,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     //处理giftcar
     
     $month=1;
-    $giftcard=substr(MD5(rand(1,1000000000).strtotime("now")),0,11);
-    $totalgift=count($DB->query("SELECT * FROM gift WHERE number=?", $giftcard));
+    $giftcard=substr(MD5(rand(1,1000000000)+strtotime(date('Y-m-d H:i:s'))),0,11);
+   
    
    /*
+    $totalgift=count($DB->query("SELECT * FROM gift WHERE number=?", $giftcard));
     while($totalgift>0)
     {
       $giftcard=substr(MD5(rand(1,1000000000)),0,11);
