@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     		 $DB->query("UPDATE gift SET status =? , usetime=? WHERE number=?", array(0,$time,$code));
     
     		 //密码加密处理
-             $pass=MD5($pass.'404notfound');
+    		 $pass=MD5($pass.'404notfound');
     
     		 //创建随机端口 并且给定6位随机密码
     		 $port=rand($portwidth[0],$portwidth[1]);
@@ -53,8 +53,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     		 while($total!=1)
     		 {
 
-    			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
     			 $port=rand($portwidth[0],$portwidth[1]);
+    			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
+    			 
     		 }
              $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
              $addtime=$rowmonth['month'];
