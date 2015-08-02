@@ -5,34 +5,36 @@ $errowinfo=NULL;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	 $myusername=$_POST['email'];
-   $mypassword=$_POST['password'];
-
-
-require 'config.php';
-
-$tbl_name="user"; // Table name
-$mypassword=MD5($mypassword.'404notfound');
-//echo $mypassword;
- //$count=mysql_num_rows($DB);
-$count=count($DB->query("SELECT * FROM user WHERE email=? and pass=?", array($myusername,$mypassword)));
-
-
-
-if($count==1){
-echo '登陆成功';
-$DB->CloseConnection();
- session_start();
- $_SESSION['myusername']=$myusername;
- $_SESSION['mypassword']=$mypassword;
-// session_register("mypassword");
- header("location:userpanel.php");
- }
- else {
- $errowinfo="账号或密码错误！";$DB->CloseConnection();
-
-
- }
+    $myusername=$_POST['email'];
+    $mypassword=$_POST['password'];
+    
+    
+    require 'config.php';
+    
+    $tbl_name="user"; // Table name
+    $mypassword=MD5($mypassword.'404notfound');
+    //echo $mypassword;
+     //$count=mysql_num_rows($DB);
+    $count=count($DB->query("SELECT * FROM user WHERE email=? and pass=?", array($myusername,$mypassword)));
+    
+    
+    
+    if($count==1)
+    {
+        echo '登陆成功';
+        $DB->CloseConnection();
+        session_start();
+        $_SESSION['myusername']=$myusername;
+        $_SESSION['mypassword']=$mypassword;
+        // session_register("mypassword");
+        header("location:userpanel.php");
+    }
+    else 
+    {
+         
+        $errowinfo="账号或密码错误！";$DB->CloseConnection();
+    
+    }
 }
 
 ?>
@@ -52,9 +54,7 @@ $DB->CloseConnection();
 <script src="dist/js/formValidation.min.js"></script>
 <script src="dist/fr/bootstrap.min.js"></script>
 <script>
-//function loginfun(){
-	//$.post("email.php",$("#loginForm").serialize());
-//}
+
 </script>
 
 </head>
@@ -99,21 +99,7 @@ $DB->CloseConnection();
                             <input type="password" class="form-control" name="password" />
                         </div>
                     </div>
-										<?php
-										//robot/
-										/*
-										if($errownum>4)
-										{
-											echo	'<div class="form-group">
-														<label class="col-sm-3 control-label" id="captchaOperation"></label>
-														<div class="col-sm-2">
-														<input type="text" class="form-control" name="captcha" />
-														</div>
-														</div>';
-														//echo '1111';
-										}else{echo null;}*/
 
-										?>
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
                             <button type="submit" class="btn btn-primary" name="signup" value="submit">登陆</button>

@@ -6,34 +6,34 @@ $errowinfo=NULL;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	 $myusername=$_POST['ademail'];
-   $mypassword=$_POST['adpassword'];
-
-
-require 'config.php';
-
-$tbl_name="user"; // Table name
-$mypassword=MD5($mypassword.'404notfound');
-//echo $mypassword;
- //$count=mysql_num_rows($DB);
-$count=count($DB->query("SELECT * FROM ad WHERE user=? and pass=?", array($myusername,$mypassword)));
-
-
-
-if($count==1){
-echo '登陆成功';
-$DB->CloseConnection();
-session_start();
-$_SESSION['aduser']=$myusername;
-$_SESSION['adpassword']=$mypassword;
-// session_register("mypassword");
- header("location:ad.php");
- }
- else {
- $errowinfo="账号或密码错误！";$DB->CloseConnection();
-
-
- }
+    $myusername=$_POST['ademail'];
+    $mypassword=$_POST['adpassword'];
+    
+    
+    require 'config.php';
+    
+    $tbl_name="user"; // Table name
+    $mypassword=MD5($mypassword.'404notfound');
+    //echo $mypassword;
+     //$count=mysql_num_rows($DB);
+    $count=count($DB->query("SELECT * FROM ad WHERE user=? and pass=?", array($myusername,$mypassword)));
+    
+    
+    
+    if($count==1)
+    {
+        echo '登陆成功';
+        $DB->CloseConnection();
+        session_start();
+        $_SESSION['aduser']=$myusername;
+        $_SESSION['adpassword']=$mypassword;
+        // session_register("mypassword");
+        header("location:ad.php");
+    }
+    else 
+    {
+        $errowinfo="账号或密码错误！";$DB->CloseConnection();
+    }
 }
 
 ?>

@@ -16,10 +16,17 @@ foreach($DB->query("SELECT * FROM user where switch=1 ") as $row)
 }
 
 //每月1号流量清0
+
 if(date('d',time())==1)
 {
-  $DB->query("UPDATE user SET u=?,d=? WHERE switch=?", array(0,0,1));
+  $re=$DB->query("UPDATE user SET u=?,d=? ", array(0,0));
+  if($re)
+  {
+    var_dump($re);
+  }
 
+  //var_dump(date('d',time()));
 }
+
 $DB->CloseConnection();
-?>
+
