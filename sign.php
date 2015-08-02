@@ -9,7 +9,7 @@
 // 获取注册表单的值
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-<<<<<<< HEAD
+
     $errowinfo=NULL;
     $successinfo=NULL;
     $email=$_POST['email'];
@@ -69,73 +69,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         else{$errowinfo='邮箱已被注册！';}
     }
     else{$errowinfo='注册码不正确或已被使用';}
-=======
- $errowinfo=NULL;
- $successinfo=NULL;
- $email=$_POST['email'];
-
- $pass=$_POST['password'];
- $code=$_POST['signcode'];
- if($code==null) $errowinfo= '非法请求，请输入验证码！！！';
-
-
- require 'config.php';
- $tbl_name="user"; // Table name
-
-
- //验证注册码
-// $sqlcode="SELECT * FROM gift WHERE number='".$code."' and status=1";
- $total=count($DB->query("SELECT * FROM gift WHERE number=?", array($code)));
-
- if($total==1)
- {
-
-		 $total==0;
-		 //检查是否有相同用户
-		// $sqlemail="SELECT * FROM user WHERE email='$email'";
-		 $total=count($DB->query("SELECT * FROM user WHERE email=?", array($email)));
-
-		 if($total==0)
-		 {
-
-			//更新注册码状态
-
-    		 $time=date('y-m-d h:i:s',time());
-    		 $DB->query("UPDATE gift SET status =? , usetime=? WHERE number=?", array(0,$time,$code));
-    
-    		 //密码加密处理
-    		 $pass=MD5($pass.'404notfound');
-    
-    		 //创建随机端口 并且给定6位随机密码
-    		 $port=rand($portwidth[0],$portwidth[1]);
-    		 $ranpass=rand(100000,999999);
-    		  //检查端口是否被占用
-    		 $total=1;
-    		 while($total!=1)
-    		 {
-
-    			 $port=rand($portwidth[0],$portwidth[1]);
-    			 $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
-    			 
-    		 }
-             $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
-             $addtime=$rowmonth['month'];
-              $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
-    		//执行SQL语句 插入数据
-              $beginflow=$beginflow*1024*1024;
-    		  $DB->query("INSERT INTO user(email,pass,passwd,transfer_enable,port,type,endtime,signtime,level) VALUES(?,?,?,?,?,?,?,?,?)", array($email,$pass,$ranpass,$beginflow,$port,7,$endtime,$time,1));
-    
-    		  $successinfo='<a href="login.php">注册成功！点此跳转到登陆界面！</a>';
-    		  $errowinfo=NULL;
-              $DB->CloseConnection();
- 			}
- 			else{$errowinfo='邮箱已被注册！';}
- }
- else{$errowinfo='注册码不正确或已被使用';}
->>>>>>> origin/master
 
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
