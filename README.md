@@ -5,10 +5,9 @@ https://github.com/mengskysama/shadowsocks/tree/manyuser
 You can use it if the back-end  use manyuser
 
 ###Note:
-```bash
+
 Probably will release a new version in September 1, you have any questions you can send e-mail to support@404notfound.cc or sumbit a issues.
 
-```
 * Add manage node of page 
 * Add SMTP
 * and so on
@@ -47,11 +46,11 @@ import sql.sql
 
 #Step 2:
 ```bash
-edit config.php mysql connection</p>
+edit config.php mysql connection
 ```
 
 
-#Update(<a href="http://404notfound.cc/about.html" target="_blank">Chinese Version</a>):</h4>
+#Update(<a href="http://www.someant.com/1381" target="_blank">Chinese Version</a>):</h4>
 1. 2015.2.14 Add find password page(Change ss password when you reset account password).</br>Send email need host support function mail(),you can install sendmail or postfix.
 2. xxxx BUG
 
