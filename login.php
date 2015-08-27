@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="signup" value="submit">登陆</button>
+                            <button type="submit" class="btn btn-primary" name="signup" value="submit">登录</button>
 														<span><a href="forgot.php"> -忘记密码-</a></span>
                         </div>
                     </div>
