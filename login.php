@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     
     if($count==1)
     {
-        echo '登陆成功';
+        echo '登录成功';
         $DB->CloseConnection();
         session_start();
         $_SESSION['myusername']=$myusername;
@@ -44,13 +44,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login-404 Not Found</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
 <!-- Custom styles for this template -->
 
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
 <script src="dist/fr/bootstrap.min.js"></script>
 <script>
@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary" name="signup" value="submit">登陆</button>
+                            <button type="submit" class="btn btn-primary" name="signup" value="submit">登录</button>
 														<span><a href="forgot.php"> -忘记密码-</a></span>
                         </div>
                     </div>
