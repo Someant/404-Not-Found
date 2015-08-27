@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="index.html">首页</a></li>
             <li role="presentation"><a href="about.html">关于</a></li>
-            <li role="presentation"><a href="login.php">登陆</a></li>
+            <li role="presentation"><a href="login.php">登录</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">404 Not Found</h3>
