@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     
     if($count==1)
     {
-        echo '登陆成功';
+        echo '登录成功';
         $DB->CloseConnection();
         session_start();
         $_SESSION['myusername']=$myusername;
