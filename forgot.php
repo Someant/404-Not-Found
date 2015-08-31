@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 		$reseturl=$token=MD5($myusername.$pass);
     //$httpurl==$_SERVER[HTTP_HOST];
-    $url='http://404notfound.cc/reset.php?email='.$myusername.'&token='.$token;
+    $url='//404notfound.cc/reset.php?email='.$myusername.'&token='.$token;
     $time=date('y-m-d h:i:s',time());
     $DB->query("UPDATE user SET last_rest_pass_time =?  WHERE email=?", array($time,$myusername));
 
@@ -98,13 +98,13 @@ else {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Forgot-404 Not Found</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
 <!-- Custom styles for this template -->
 
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
 <script src="dist/fr/bootstrap.min.js"></script>
 
@@ -119,7 +119,7 @@ else {
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="index.html">首页</a></li>
             <li role="presentation"><a href="about.html">关于</a></li>
-            <li role="presentation"><a href="login.php">登陆</a></li>
+            <li role="presentation"><a href="login.php">登录</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">404 Not Found</h3>
@@ -132,14 +132,14 @@ else {
       </div>
 
       <footer class="footer">
-        <p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
+        <p style="font-size:.9em">&copy; <a href="//404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="//someant.com" target="_blank">Someant</a></span></p>
       </footer>
 
     </div> <!-- /container -->
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
     <script src="./js/site.js"></script>
     <script type="text/javascript">
 

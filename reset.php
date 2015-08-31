@@ -30,7 +30,7 @@ if($mt==$token)
 			$DB->query("UPDATE user SET pass =?  WHERE email=?", array(MD5($pass.'404notfound'),$myusername));
 			$DB->CloseConnection();
 			$errowinfo=NULL;
-			$successinfo='<a href="login.php">重置成功！点此跳转到登陆界面！</a>';
+			$successinfo='<a href="login.php">重置成功！点此跳转到登录界面！</a>';
 		}
 
 	}
@@ -38,6 +38,7 @@ if($mt==$token)
 else
 {
 	$errowinfo='失效链接或者链接错误！';
+
 
 }
 
@@ -49,13 +50,13 @@ else
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ResetPassword-404 Not Found</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 <link rel="stylesheet" href="style.css">
 <!-- Custom styles for this template -->
 
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="dist/js/formValidation.min.js"></script>
 <script src="dist/fr/bootstrap.min.js"></script>
 <script>
@@ -124,7 +125,7 @@ else
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
     <script src="./js/site.js"></script>
     <script type="text/javascript">
 

@@ -9,7 +9,7 @@ foreach($DB->query("SELECT * FROM user where switch=1 ") as $row)
   $d1=strtotime($time);
   $d2=strtotime($row['endtime']);
   $Days=round(($d1-$d2)/3600/24);
-  if($Days>2)//超过三天未续期则冻结账号
+  if($Days>0)
   {
     $DB->query("UPDATE user SET switch=? WHERE id=?", array(0,$row['id']));
   }
@@ -30,3 +30,4 @@ if(date('d',time())==1)
 
 $DB->CloseConnection();
 
+echo 'test';
