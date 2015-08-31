@@ -51,7 +51,11 @@ else
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ResetPassword-404 Not Found</title>
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<<<<<<< HEAD
 <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+=======
+<!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+>>>>>>> origin/master
 <link rel="stylesheet" href="style.css">
 <!-- Custom styles for this template -->
 
