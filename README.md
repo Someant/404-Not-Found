@@ -50,6 +50,7 @@ $beginflow=10240;//初始流量设置 单位MB
 $portwidth=[50000,59999];//端口范围
 $base_url="404notfound.cc";
 ```
+
 3. Step 3:
 Auto stop server when user becoming due,you can using crontab:
 ```bash
