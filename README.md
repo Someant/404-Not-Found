@@ -34,10 +34,10 @@ Administrator Page Url:yourdomain.com/admin
 
 #How do you use it?
 
-1. Step 1:
+* Step 1:
 import sql.sql
 
-2. Step 2:
+* Step 2:
 edit config.php change mysql connection
 ```php
 define('DBHost', 'localhost');
@@ -50,11 +50,12 @@ $beginflow=10240;//初始流量设置 单位MB
 $portwidth=[50000,59999];//端口范围
 $base_url="404notfound.cc";
 ```
-
-3. Step 3:
+* Step 3:
 Auto stop server when user becoming due,you can using crontab:
 ```bash
 example:15,45 * * * * curl http:yourdomain.com/loop.php
 ```
 
+#Update
+September 1 :Support Ajax
 
