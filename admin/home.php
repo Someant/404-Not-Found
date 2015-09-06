@@ -72,13 +72,8 @@ $userlist=$DB->query("SELECT * FROM user order by u+d desc limit $b,$e");
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <title>404 Not Found</title>
    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" />
-<<<<<<< HEAD:admin/home.php
    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
    <link rel="stylesheet" href="../style.css" />
-=======
-   <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
-   <link rel="stylesheet" href="style.css" />
->>>>>>> origin/master:ad.php
    <!-- Custom styles for this template -->
 
    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>

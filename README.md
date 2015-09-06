@@ -50,16 +50,12 @@ $beginflow=10240;//初始流量设置 单位MB
 $portwidth=[50000,59999];//端口范围
 $base_url="404notfound.cc";
 ```
-<<<<<<< HEAD
-* Step 3:
-=======
-3. Step 3:
->>>>>>> origin/master
+
 Auto stop server when user becoming due,you can using crontab:
 ```bash
 example:15,45 * * * * curl http:yourdomain.com/loop.php
 ```
 
 #Update
-September 1 :Support Ajax
+September 1 :Support Ajax,Editor Node
 

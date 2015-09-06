@@ -24,81 +24,39 @@ use Endroid\QrCode\QrCode;
 
 $msg = 0;
 $msgtype = 0;
+$node=$DB->query("select * from node where status=1");
 
-
-$url = "rc4-md5:{$sspass}@sfo.404notfound.cc:{$port}";
-$url = "ss://" . base64_encode($url);
-$qrCode = new QrCode();
-$qrCode->setText($url);
-$qrCode->setSize(140);
-$qrCode->setPadding(5);
-$sfoimg= "<img  src='{$qrCode->getDataUri()}' >";
-
-
-$url = "aes-256-cfb:{$sspass}@hk.404notfound.cc:{$port}";
-$url = "ss://" . base64_encode($url);
-$qrCode = new QrCode();
-$qrCode->setText($url);
-$qrCode->setSize(140);
-$qrCode->setPadding(5);
-$hkimg="<img  src='{$qrCode->getDataUri()}' >";
-
-
+//显示二维码
+function qr_node($sspass,$port)
+{
+	$url = "rc4-md5:{$sspass}@jp01.playss.me:{$port}";
+	$url = "ss://" . base64_encode($url);
+	$qrCode = new QrCode();
+	$qrCode->setText($url);
+	$qrCode->setSize(140);
+	$qrCode->setPadding(5);
+	$img= $qrCode->getDataUri();
+	return $img;
+}
 ?>
+			<div role="tabpanel">
 
-							<div role="tabpanel">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <?php foreach($node as $key=>$val){ ?>
+                <li role="presentation" <?php if($key==0) echo 'class="active"' ;?>><a href="#<?php echo explode('.',$val['url'])[0]; ?>" aria-controls="<?php echo explode('.',$val['url'])[0]; ?>" role="tab" data-toggle="tab"><?php echo $val['name']; ?></a></li>
+                <?php } ?>
 
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
-									<?php
+              </ul>
+            
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <?php foreach($node as $key=>$val){ ?>
+                <div role="tabpanel" class="tab-pane <?php if($key==0) echo 'active'; ?>" id="<?php echo explode('.',$val['url'])[0]; ?>">
+                   <p class="text-center"><img src="<?php echo qr_node($val['url'],$sspass,$port); ?>"></br>服务器地址:<?php echo $val['url']; ?></p>
+                </div>
+                <?php } ?>
+              </div>
+            
+      </div>
 
-									//不会写函数的渣渣
-									//权限控制 根据level显示不同的节点信息
-									if($lv==1)
-									{
-										echo '<li role="presentation" class="active"><a href="#sfo" aria-controls="sfo" role="tab" data-toggle="tab">旧金山</a></li>';
-										echo '<li role="presentation"><a href="#hk" aria-controls="profile" role="tab" data-toggle="tab">香港</a></li>';
-									}
-									elseif($lv=4)
-									{
-										echo '<li role="presentation"><a href="#hk" aria-controls="profile" role="tab" data-toggle="tab">香港</a></li>';
-									}
-									?>
-
-								</ul>
-
-								<!-- Tab panes -->
-								<div class="tab-content">
-								<?php
-									if($lv==1)
-									{
-										echo
-										'<div role="tabpanel" class="tab-pane active" id="sfo">
-	                    <p class="text-center">'
-												.$sfoimg.
-	                    '<P class="text-center">服务器地址:sfo.404notfound.cc</p>
-	                    </p>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="hk">
-											<p class="text-center">'
-												.$hkimg.
-											'<P class="text-center">服务器地址:hk.404notfound.cc</p>
-											</p>
-										</div>';
-									}
-									if($lv==4)
-									{
-										echo
-										'<div role="tabpanel" class="tab-pane active" id="hk">
-											<p class="text-center">'
-												.$hkimg.
-											'<P class="text-center">服务器地址:hk.404notfound.cc</p>
-											</p>
-										</div>';
-									}
-
-							?>
-
-								</div>
-
-							</div>

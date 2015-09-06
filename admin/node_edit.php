@@ -3,38 +3,24 @@ session_start();$user=@$_SESSION['aduser'];
 date_default_timezone_set('prc');
 error_reporting(E_ALL & ~E_NOTICE);
 if($user==NULL) header("location:index.html");
-//$rowad = $DB->row("SELECT * FROM ad WHERE user=?",array($user));
 
-  require 'config.php';
-  require 'functions.php';
-  $giftcard='';
-  //$email='';
+require '../config.php';
+require '../functions.php';
+$data = $DB->row("SELECT * FROM node WHERE id=?",array($_GET['node_id']));
 
-
-    //处理gift
-    $month=1;
-    $giftcard=substr(MD5(rand(1,1000)),0,11);
-    //$email=isset($_POST['email']);
-    //echo $email;
-    if($_POST['month']!=NULL)
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $name=$_POST['name'];
+    $url=$_POST['url'];
+    $re=$DB->query("update node set name=?, url=? where id=?", array($name,$url,$_GET['node_id']));
+    if($re)
     {
-      $month=$_POST['month'];
+       header("location:node.php");
     }
-    $DB->query("INSERT INTO gift(number,month) VALUES(?,?)", array($giftcard,$month));
-    if($_POST['email']!=NULL)
-    {
-        $email=$_POST['email'];
-        $subject='感谢购买404NotFound服务';
-        $message = '您的注册码是：'.$giftcard.'登录到404NotFound进行注册，或者复制下面的链接完成注册！如果有任何疑问可以查看主页的帮助文档，或者邮件至:support@404notFound.cc
-http://404notfound.cc/sign.php?signcode='.$giftcard;
-        sendmail($email,$subject,$message);
-    }
+}
 
 
 
-
-
-  }
 ?>
 <html lang="zh-CN">
  <head>
@@ -42,21 +28,23 @@ http://404notfound.cc/sign.php?signcode='.$giftcard;
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <title>404 Not Found</title>
    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" />
-   <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
-   <link rel="stylesheet" href="style.css" />
+   <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
+   <link rel="stylesheet" href="../style.css" />
+   <!-- Custom styles for this template -->
+
    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
    <script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
  </head>
  <body>
-<?php
 
   <div class="container">
    <div class="header">
     <nav>
       <ul class="nav nav-pills pull-right">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="help.html" target="_blank">使用帮助</a></li>
+        <li><a href="//<?php echo $base_url; ?>/admin/home.php">首页</a></li>
+        <li><a href="//<?php echo $base_url; ?>/admin/gift.php">优惠码</a></li>
+        <li  class="active"><a href="//<?php echo $base_url; ?>/admin/node.php">节点</a></li>
         <li>
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user; ?><span class="caret"></span>
       </a>
@@ -73,31 +61,38 @@ http://404notfound.cc/sign.php?signcode='.$giftcard;
    </div>
    <div class="row marketing">
 
-     <form class="form-inline" method="post" id="loginForm">
-      <div class="form-group">
-        <label class="sr-only" for="exampleInputEmail3">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name='email'>
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="exampleInputPassword3">Month</label>
-        <input type="text" class="form-control" id="month" placeholder="Month" name='month'>
-      </div>
-
-      <button type="submit" class="btn btn-default">生成</button>
-      <span class="label label-success text-center" style="margin-left:20px;font-size:12px;"><?php echo $giftcard; ?></span>
-    </form>
-
-
+    
+       <!-- Tab panes -->
+       <div class="tab-content">
+             <form id="loginForm" method="post" class="form-inline"> 
+              <div class="form-group"> 
+                 <label for="exampleInputEmail3" class="sr-only">名称</label> 
+                <input type="text" name="name" placeholder="名称" id="email" class="form-control" value="<?php echo $data['name']; ?>"> 
+              </div> 
+               <div class="form-group"> 
+                 <label for="exampleInputPassword3" class="sr-only">URL</label> 
+                 <input type="text" name="url" placeholder="URL" id="month" class="form-control" value="<?php echo $data['url'];?>"> 
+               </div> 
+         
+         
+              <button class="btn btn-default" type="submit">保存</button> 
+               <span style="margin-left:20px;font-size:12px;" class="label label-success text-center"></span> 
+         </form>
+          
+          
+         
+        
+     </div>
 
    </div>
    <footer class="footer">
-    <p style="font-size:.9em">&copy; <a href="http://404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="http://someant.com" target="_blank">Someant</a></span></p>
+    <p style="font-size:.9em">&copy; <a href="//404notfound.cc" target="_blank" >404NOTFOUND</a> 2015 <span style="float:right;font-size:.8em">by <a href="//someant.com" target="_blank">Someant</a></span></p>
    </footer>
   </div>
   <!-- /container -->
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  <script src="./js/site.js"></script>
+ 
+  <script src="../js/site.js"></script>
   <script type="text/javascript">
 
 $(document).ready(function() {
