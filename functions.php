@@ -1,5 +1,4 @@
 <?php
-require 'config.php';
 //邮件发送
 function sendmail($email,$subject,$message)
 {
