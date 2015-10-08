@@ -27,9 +27,9 @@ $msgtype = 0;
 $node=$DB->query("select * from node where status=1");
 
 //显示二维码
-function qr_node($sspass,$port)
+function qr_node($url,$sspass,$port,$method='aes-256-cfb')
 {
-	$url = "rc4-md5:{$sspass}@jp01.playss.me:{$port}";
+	$url = $method.":{$sspass}@".$url.":{$port}";
 	$url = "ss://" . base64_encode($url);
 	$qrCode = new QrCode();
 	$qrCode->setText($url);

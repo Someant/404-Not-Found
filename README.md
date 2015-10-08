@@ -24,6 +24,7 @@ Default User account：demo@demo.com    123456
 Default Administrator account:demo  123456
 Default Gift card:123456
 Administrator Page Url:yourdomain.com/admin
+Default SS method:aes-256-cfb //qrcode.php #30 qr_node()
 ```
 #UserPanel
 <img src="http://ww4.sinaimg.cn/mw690/b1209f59gw1eqzn2nzpq5j20n10jkwfw.jpg">
