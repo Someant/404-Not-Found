@@ -27,6 +27,11 @@ if(post_data('signcode')!=NULL)
 //exit user
 if(post_data('email')!=NULL)
 {
+    if(checkemail($email)==false)
+    {
+        echo '请输入一个正确的邮箱！';
+        exit;
+    }
 
     $email=htmlspecialchars($_POST['email']);
     $total=count($DB->query("SELECT * FROM user WHERE email=?", array($email)));
