@@ -17,4 +17,10 @@ function post_data($str){
     $val = !empty($_POST[$str]) ? $_POST[$str] : null;
     return $val;
 }
+
+//邮箱正则表达式
+function checkemail($str)
+{
+    return (preg_match('/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/',$str))?true:false;
+}
   
