@@ -75,12 +75,21 @@ if(post_data('password'))
         $ranpass=rand(100000,999999);
         //检查端口是否被占用
         $total=1;
-        while($total!=1)
-        {
+        $portarray=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
         
-            $total=count($DB->query("SELECT * FROM user WHERE port=?",array($port)));
-            $port=rand($portwidth[0],$portwidth[1]);
-        }
+    	while($total!=0)
+    	{
+            $total=0;
+    		$port=rand($portwidth[0],$portwidth[1]);
+            foreach($portarray as $val)
+            {
+                if($port==$val)
+                {
+                    $total++;
+                }
+            }
+    	}
+    	
         $rowmonth = $DB->row("SELECT * FROM gift WHERE number=?",array($code));
         $addtime=$rowmonth['month'];
         $endtime=date('Y-m-d', strtotime ("+$addtime month", strtotime($time)));
