@@ -6,7 +6,7 @@ You can use it if the back-end  use manyuser
 
 ###Note:
 
-Probably will release a new version in September 1, you have any questions you can send e-mail to support@404notfound.cc or sumbit a issues.
+Probably will release a new version in September 1, you have any questions you can send e-mail to bye@someant.com or sumbit a issues.
 
 * PHP>=5.4
 * if you want show server infomation need istall munin
