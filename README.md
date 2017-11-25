@@ -54,7 +54,7 @@ $base_url="404notfound.cc";
 
 Auto stop server when user becoming due,you can using crontab:
 ```bash
-example:15,45 * * * * curl http:yourdomain.com/loop.php
+example:15,45 * * * * curl http://yourdomain.com/loop.php
 ```
 
 #Update
